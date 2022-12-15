@@ -21,7 +21,7 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["n;"] = ":"
--- exit insert mode with "jj"
+-- exit insert mode "jj"
 vim.keymap.set("i", "jj", "<Esc>", { silent = true, noremap = true })
 -- insert semicolon at end of line with ';;'
 vim.keymap.set("i", ";;", "<Esc>A;", { silent = true, noremap = true })
@@ -198,3 +198,17 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+-- absolute line number in insert mode
+vim.api.nvim_create_autocmd("InsertEnter", {
+  command = "set norelativenumber"
+})
+-- relative line number in normal mode
+vim.api.nvim_create_autocmd("InsertLeave", {
+  command = "set relativenumber"
+})
+vim.api.nvim_create_autocmd("BufLeave", {
+  command = "w"
+})
+vim.api.nvim_create_autocmd("FocusLost", {
+  command = "w"
+})
