@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "lunar"
+lvim.colorscheme = "duskfox"
 vim.o.relativenumber = true
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -21,13 +21,19 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["n;"] = ":"
+lvim.keys.normal_mode["ff"] = ":HopWord<Enter>"
 -- exit insert mode "jj"
 vim.keymap.set("i", "jj", "<Esc>", { silent = true, noremap = true })
 -- insert semicolon at end of line with ';;'
 vim.keymap.set("i", ";;", "<Esc>A;", { silent = true, noremap = true })
 -- go to next line and set up brackets with "jk"
 vim.keymap.set("i", "jk", "<Esc>o{}<Esc>ha", { silent = true, noremap = true })
+-- go to next line with ctrl-l
+vim.keymap.set("i", "<C-l>", "<Esc>A<Enter>", { silent = true, noremap = true })
 
+lvim.keys.visual_mode = {
+  ["<C-c>"] = ":%w !pbcopy<Enter><Enter>"
+}
 
 -- lvim.keys.insert_mode = {
 --   ["jj"] = "<Esc>",
@@ -179,11 +185,25 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- Additional Plugins
 lvim.plugins = {
+  { "catppuccin/nvim" },
+  { "rose-pine/neovim" },
+  { "zanglg/nova.nvim" },
+  { "EdenEast/nightfox.nvim" },
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
+  {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  },
 }
+
+
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
@@ -206,9 +226,9 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 vim.api.nvim_create_autocmd("InsertLeave", {
   command = "set relativenumber"
 })
-vim.api.nvim_create_autocmd("BufLeave", {
-  command = "w"
-})
+-- vim.api.nvim_create_autocmd("BufLeave", {
+--   command = "w"
+-- })
 vim.api.nvim_create_autocmd("FocusLost", {
   command = "w"
 })
