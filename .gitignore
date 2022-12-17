@@ -41,3 +41,6 @@ luac.out
 
 # Plugin folder
 plugin/
+
+# List of settings
+lv-settings.lua
