@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "duskfox"
+lvim.colorscheme = "carbonfox"
 vim.o.relativenumber = true
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -30,6 +30,8 @@ vim.keymap.set("i", ";;", "<Esc>A;", { silent = true, noremap = true })
 vim.keymap.set("i", "jk", "<Esc>o{}<Esc>ha", { silent = true, noremap = true })
 -- go to next line with ctrl-l
 vim.keymap.set("i", "<C-l>", "<Esc>A<Enter>", { silent = true, noremap = true })
+-- be able to do :wq from insert mode
+vim.keymap.set("i", ":wq", "<Esc>:wq<Enter>", { silent = true, noremap = true })
 
 lvim.keys.visual_mode = {
   ["<C-c>"] = ":%w !pbcopy<Enter><Enter>"
