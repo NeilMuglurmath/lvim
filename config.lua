@@ -32,6 +32,11 @@ vim.keymap.set("i", "jk", "<Esc>o{}<Esc>ha", { silent = true, noremap = true })
 vim.keymap.set("i", "<C-l>", "<Esc>A<Enter>", { silent = true, noremap = true })
 -- be able to do :wq from insert mode
 vim.keymap.set("i", ":wq", "<Esc>:wq<Enter>", { silent = true, noremap = true })
+-- tab out of parentheses, brackets, etc
+vim.keymap.set("i", "kk", "<Esc>la", { silent = true, noremap = true })
+
+-- keep cursor in middle of screen
+vim.opt.so = 0
 
 lvim.keys.visual_mode = {
   ["<C-c>"] = ":%w !pbcopy<Enter><Enter>"
