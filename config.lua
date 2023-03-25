@@ -11,10 +11,11 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "spaceduck"
 vim.o.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.timeoutlen = 250;
+lvim.colorscheme = "spaceduck"
 
 -- vim.o.autowriteall = true
 -- to disable icons and use a minimalist setup, uncomment the following
@@ -36,7 +37,7 @@ vim.keymap.set("i", ";;", "<Esc>A;", { silent = true, noremap = true })
 vim.keymap.set("i", "jk", "<Esc>A{<CR>}<C-o>O<Tab>", { silent = true, noremap = true })
 
 -- keep cursor in middle of screen
-vim.opt.so = 999
+vim.o.so = 999
 
 -- Disable virtual_text since it's redundant due to lsp_lines.
 lvim.lsp.diagnostics.virtual_text = false
